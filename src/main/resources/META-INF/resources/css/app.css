@@ -1,0 +1,47 @@
+:root { --asphalt:#1d2125; --asphalt-2:#2a3036; --paint:#f2c230; --sign:#1856b8; --concrete:#e9ebed; --free:#1f8f4e; --busy:#c93c3c; --muted:#5d6670; --line:#d3d7db; }
+body { font-family:'Barlow',system-ui,sans-serif; background:var(--concrete); color:var(--asphalt); font-size:1rem; }
+h1,h2,h3,h4,h5,.display-font { font-family:'Barlow Condensed','Barlow',sans-serif; font-weight:700; letter-spacing:.01em; }
+.app-nav { background:var(--asphalt); border-bottom:5px solid var(--paint); }
+.brand-sign { display:inline-grid; place-items:center; width:34px; height:34px; background:var(--sign); color:#fff; border:2px solid #fff; border-radius:6px; font:700 1.25rem 'Barlow Condensed',sans-serif; margin-right:.6rem; }
+.app-nav .navbar-brand { font:700 1.35rem 'Barlow Condensed',sans-serif; letter-spacing:.02em; }
+.app-nav .nav-link { color:#b9c0c7; font-weight:500; padding:.5rem 1rem; }
+.app-nav .nav-link:hover, .app-nav .nav-link:focus-visible { color:var(--paint); }
+.page-head { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; margin:.5rem 0 1.5rem; }
+.page-head h1 { font-size:2.4rem; margin:0; line-height:1; }
+.page-head p { margin:.4rem 0 0; color:var(--muted); }
+.btn-paint { background:var(--paint); color:var(--asphalt); border:2px solid var(--asphalt); border-radius:6px; font-weight:700; padding:.55rem 1.25rem; }
+.btn-paint:hover { background:#ffd24a; color:var(--asphalt); }
+.panel { background:#fff; border:2px solid var(--asphalt); border-radius:8px; }
+.panel-title { padding:.9rem 1.25rem; border-bottom:2px solid var(--asphalt); display:flex; justify-content:space-between; align-items:center; }
+.panel-title h2 { font-size:1.35rem; margin:0; }
+.strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); margin-bottom:1.5rem; }
+.strip > div { padding:1rem 1.25rem; border-right:1px solid var(--line); }
+.strip > div:last-child { border-right:0; }
+.strip .num { font:700 2.4rem/1 'Barlow Condensed',sans-serif; }
+.strip .lbl { color:var(--muted); font-size:.9rem; }
+.lot { background:var(--asphalt); border-radius:8px; padding:1.25rem; margin-bottom:1.5rem; }
+.lot h2 { color:#fff; font-size:1.35rem; }
+.lot-legend { color:#b9c0c7; font-size:.85rem; }
+.bays { display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:0; margin-top:1rem; }
+.bay { height:96px; border-left:3px solid #f5f5f5; border-right:3px solid #f5f5f5; margin-left:-3px; text-align:center; padding-top:.55rem; color:#fff; font:700 1.15rem 'Barlow Condensed',sans-serif; }
+.bay small { display:block; font:500 .75rem 'Barlow',sans-serif; color:#b9c0c7; }
+.bay .glyph { display:block; font-size:1.6rem; line-height:1.4; }
+.bay-free .glyph { color:var(--free); }
+.bay-free .glyph::before { content:"P"; font:700 1.5rem 'Barlow Condensed',sans-serif; }
+.bay-busy { background:rgba(201,60,60,.28); }
+.plate { display:inline-block; font:700 1.05rem 'Barlow Condensed',sans-serif; letter-spacing:.12em; background:var(--paint); border:2px solid var(--asphalt); border-radius:5px; padding:0 .5rem; }
+.table-modern { margin:0; }
+.table-modern th { font-weight:600; color:var(--muted); font-size:.85rem; border-bottom:1px solid var(--line); padding:.75rem 1.25rem; }
+.table-modern td { padding:.75rem 1.25rem; vertical-align:middle; border-color:var(--line); }
+.pill { padding:.15rem .6rem; border-radius:4px; font-size:.85rem; font-weight:600; }
+.pill-in { background:#fff1c2; color:#6b4e00; border:1px solid var(--paint); }
+.pill-done { background:#d9f0e2; color:#14653a; border:1px solid var(--free); }
+.alert { border-radius:6px; border-width:2px; font-weight:500; }
+.type-opt input { position:absolute; opacity:0; }
+.type-opt label { display:block; border:2px solid var(--line); border-radius:8px; padding:1rem; cursor:pointer; background:#fff; }
+.type-opt label strong { font:700 1.4rem 'Barlow Condensed',sans-serif; display:block; }
+.type-opt input:checked + label { border-color:var(--asphalt); background:#fff8dc; box-shadow:0 0 0 3px var(--paint); }
+.type-opt input:focus-visible + label { outline:3px solid var(--sign); outline-offset:2px; }
+.plate-input { font:700 2.4rem 'Barlow Condensed',sans-serif; letter-spacing:.2em; text-align:center; text-transform:uppercase; background:var(--paint); border:3px solid var(--asphalt); border-radius:8px; padding:.4rem; }
+.plate-input:focus { background:#ffd24a; border-color:var(--asphalt); box-shadow:0 0 0 3px var(--sign); }
+footer.app-foot { color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); padding-top:1rem; }

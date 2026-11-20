@@ -1,0 +1,17 @@
+{#include base}
+<div class="page-head">
+  <div><h1>Reportes</h1><p>Resumen del día y vehículos que siguen dentro.</p></div>
+  <a class="btn btn-paint" href="/report/pdf">Descargar PDF de tickets</a>
+</div>
+<div class="panel strip">
+  <div><div class="num">$ {summary.revenueToday}</div><div class="lbl">Recaudo de hoy</div></div>
+  <div><div class="num">{summary.activeTickets}</div><div class="lbl">Vehículos dentro</div></div>
+  {#for ty in types}<div><div class="num">$ {ty.hourlyRate}</div><div class="lbl">{ty.label}, por hora o fracción</div></div>{/for}
+</div>
+<section class="panel overflow-hidden">
+  <div class="panel-title"><h2>Vehículos dentro ahora</h2></div>
+  <ul class="list-group list-group-flush">
+  {#for t in active}<li class="list-group-item d-flex justify-content-between align-items-center"><span><span class="plate">{t.plate}</span> &nbsp;cupo {t.spot.code}</span><span class="text-muted">ingresó {t.entryTime.format('dd/MM HH:mm')}</span></li>{#else}<li class="list-group-item text-muted">No hay vehículos dentro. Registra un ingreso para verlo aquí.</li>{/for}
+  </ul>
+</section>
+{/include}

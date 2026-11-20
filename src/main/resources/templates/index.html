@@ -1,0 +1,31 @@
+{#include base}
+<div class="page-head">
+  <div><h1>Panel del parqueadero</h1><p>Cupos disponibles, vehículos dentro y cobros del día.</p></div>
+  <a href="/entry" class="btn btn-paint">Registrar ingreso</a>
+</div>
+<div class="panel strip">
+  <div><div class="num">{summary.availableCars}</div><div class="lbl">Cupos libres de carro</div></div>
+  <div><div class="num">{summary.availableMotorcycles}</div><div class="lbl">Cupos libres de moto</div></div>
+  <div><div class="num">{summary.activeTickets}</div><div class="lbl">Vehículos dentro</div></div>
+  <div><div class="num">$ {summary.revenueToday}</div><div class="lbl">Recaudo de hoy</div></div>
+</div>
+<section class="lot">
+  <div class="d-flex justify-content-between align-items-baseline"><h2>Cupos</h2><span class="lot-legend">P = libre, rojo = ocupado</span></div>
+  <div class="bays">
+  {#for s in spots}<div class="bay {#if s.occupied}bay-busy{#else}bay-free{/if}">{s.code}<span class="glyph">{#if s.occupied}{#if s.type.name == 'CAR'}{#else}{/if}{/if}</span><small>{s.type.label}</small></div>{/for}
+  </div>
+</section>
+<section class="panel overflow-hidden">
+  <div class="panel-title"><h2>Tickets</h2></div>
+  <div class="table-responsive"><table class="table table-modern"><thead><tr><th>#</th><th>Placa</th><th>Cupo</th><th>Tipo</th><th>Entrada</th><th>Salida</th><th>Total</th><th>Estado</th><th></th></tr></thead><tbody>
+  {#for t in tickets}
+  <tr><td>{t.id}</td><td><span class="plate">{t.plate}</span></td><td>{t.spot.code}</td><td>{t.spot.type.label}</td>
+  <td>{t.entryTime.format('dd/MM HH:mm')}</td>
+  <td>{#if t.exitTime}{t.exitTime.format('dd/MM HH:mm')}{#else}-{/if}</td>
+  <td>{#if t.status.name == 'CLOSED'}$ {t.amount}{#else}-{/if}</td>
+  <td>{#if t.status.name == 'ACTIVE'}<span class="pill pill-in">Dentro</span>{#else}<span class="pill pill-done">Cobrado</span>{/if}</td>
+  <td class="text-end">{#if t.status.name == 'ACTIVE'}<form method="post" action="/tickets/{t.id}/exit"><button class="btn btn-sm btn-danger">Cobrar salida</button></form>{#else}<a class="btn btn-sm btn-outline-primary" href="/tickets/{t.id}/receipt">Comprobante</a>{/if}</td></tr>
+  {/for}
+  </tbody></table></div>
+</section>
+{/include}

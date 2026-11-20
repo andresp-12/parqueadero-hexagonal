@@ -1,0 +1,16 @@
+{#include base}
+<div class="page-head"><div><h1>Registrar ingreso</h1><p>Escribe la placa y elige el tipo de vehículo. El cupo se asigna solo.</p></div></div>
+<div class="row"><div class="col-lg-7">
+<form method="post" action="/tickets" class="panel p-4">
+  <label class="form-label fw-semibold" for="plate">Placa</label>
+  <input id="plate" name="plate" class="form-control plate-input mb-4" maxlength="7" placeholder="ABC123" autocomplete="off" required>
+  <div class="fw-semibold mb-2">Tipo de vehículo</div>
+  <div class="row g-3 mb-4">
+  {#for ty in types}<div class="col-6 type-opt"><input type="radio" name="type" id="type-{ty.name}" value="{ty.name}" {#if ty_isFirst}checked{/if}>
+    <label for="type-{ty.name}"><strong>{#if ty.name == 'CAR'}{#else}{/if} {ty.label}</strong>$ {ty.hourlyRate} por hora</label></div>{/for}
+  </div>
+  <p class="text-muted">Cupos libres: {summary.availableCars} de carro y {summary.availableMotorcycles} de moto.</p>
+  <button class="btn btn-paint">Registrar ingreso</button> <a href="/" class="btn btn-outline-secondary">Cancelar</a>
+</form>
+</div></div>
+{/include}
